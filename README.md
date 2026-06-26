@@ -12,7 +12,7 @@ Storage: **your external Supabase project** (Postgres + Auth). No Lovable Cloud.
 ## 1. Supabase setup (one time)
 
 1. Create a project at https://supabase.com (or reuse one).
-2. In SQL Editor, run the files in `supabase/migrations/` **in order**: 001 → 005.
+2. In SQL Editor, run the files in `db/migrations/` **in order**: 001 → 005.
 3. Authentication → Providers → enable **Email** (password). Optional: disable email confirmation for testing.
 4. From Project Settings → API, copy:
    - `Project URL`              → `SUPABASE_URL` and `VITE_SUPABASE_URL`

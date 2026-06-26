@@ -1,0 +1,17 @@
+[Unit]
+Description=Delta Algo Strategy Worker
+After=network.target redis-server.service delta-websocket.service
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/opt/delta-algo/backend
+EnvironmentFile=/opt/delta-algo/backend/.env
+ExecStart=/opt/delta-algo/backend/.venv/bin/python -m workers.strategy_worker
+Restart=always
+RestartSec=3
+KillSignal=SIGTERM
+TimeoutStopSec=15
+
+[Install]
+WantedBy=multi-user.target

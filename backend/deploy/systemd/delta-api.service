@@ -1,0 +1,17 @@
+[Unit]
+Description=Delta Algo FastAPI
+After=network.target redis-server.service
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/opt/delta-algo/backend
+EnvironmentFile=/opt/delta-algo/backend/.env
+ExecStart=/opt/delta-algo/backend/.venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8010 --proxy-headers
+Restart=always
+RestartSec=3
+KillSignal=SIGTERM
+TimeoutStopSec=15
+
+[Install]
+WantedBy=multi-user.target

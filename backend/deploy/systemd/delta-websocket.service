@@ -1,0 +1,17 @@
+[Unit]
+Description=Delta Algo WebSocket Worker
+After=network.target redis-server.service
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/opt/delta-algo/backend
+EnvironmentFile=/opt/delta-algo/backend/.env
+ExecStart=/opt/delta-algo/backend/.venv/bin/python -m workers.websocket_worker
+Restart=always
+RestartSec=3
+KillSignal=SIGTERM
+TimeoutStopSec=15
+
+[Install]
+WantedBy=multi-user.target

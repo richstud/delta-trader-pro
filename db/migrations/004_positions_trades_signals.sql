@@ -24,7 +24,7 @@ create table if not exists public.positions (
   entry_price numeric not null,
   sl numeric,
   tp numeric,
-  trailing numeric,
+  trailing_stop numeric,
   status text not null default 'open' check (status in ('open','closed')),
   mode text not null check (mode in ('paper','live')),
   opened_at timestamptz not null default now(),

@@ -24,7 +24,7 @@ async def open_paper_position(user_id: str, symbol: str, side: str, qty: float, 
     sb = supabase_admin()
     pos = {
         "user_id": user_id, "symbol": symbol, "side": side, "qty": qty,
-        "entry_price": price, "sl": sl, "tp": tp, "trailing": None,
+        "entry_price": price, "sl": sl, "tp": tp, "trailing_stop": None,
         "status": "open", "mode": "paper", "opened_at": now_iso(),
     }
     p = sb.table("positions").insert(pos).execute().data[0]
